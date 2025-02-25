@@ -1,0 +1,158 @@
+/*---------------- css default -----------------------------*/
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-image:  url(bg.jpg);
+	background-position:center top ;
+}
+table {
+	font-family: Verdana;	font-size: 11px;
+	border-collapse: collapse; color: #725022;	line-height: 1.4;
+}
+p{	line-height: 1.4; color: #725022;}
+input[type=text] 
+{ 
+	background-color: #ffffff;
+	color: #725022;
+	border: #6a6a48 1px solid;	font-family: Verdana;
+	font-size: 11px;
+ 	   padding: 2px 0px 0px 2px;
+}
+.Search {
+	background-color: #ffffff;
+	color: #725022;
+	border: #6a6a48 1px solid;	font-family: Verdana;
+	font-size: 11px;
+ 	   padding: 2px 0px 0px 2px;
+}
+select {
+	background-color: #ffffff;
+	color: #725022;
+	border: #6a6a48 1px solid;	font-family: Verdana;
+	font-size: 11px;
+ 	   padding: 2px 0px 0px 2px;
+}
+textarea {
+	background-color: #ffffff;
+	color: #725022;
+	border: #6a6a48 1px solid;	font-family: Verdana;
+	font-size: 11px;
+ 	   padding: 2px 0px 0px 2px;
+}
+
+hr {	color: #999999;	}
+a:link {
+	COLOR: #725022; TEXT-DECORATION: underline;
+}
+a:visited {
+	COLOR: #725022; TEXT-DECORATION: underline;
+}
+a:hover {
+	COLOR: #725022; TEXT-DECORATION:none ;
+}
+a:active {
+	text-decoration:underline ;	color: #725022;
+}
+
+/*---------------- css text -----------------------------*/
+.text_title {
+	color: #725022;
+	font-size: 30pt;
+	font-weight: bold;
+	font-style:italic;
+	font-family:Verdana, Helvetica, sans-serif;
+}
+.textbody {
+	font-family: Verdana;	font-size: 11px;
+	border-collapse: collapse; color: #725022;	line-height: 1.4;
+}
+.bg_bottom-menu {
+	background-image: url(https://cedarhillcenter.org/basicimg/bottom-menu.gif);
+	background-repeat: no-repeat;
+	background-position:bottom right;
+}
+.bg_menu {
+	background-color:#b1780c;
+	background-image: url(menu-bg.gif);
+	background-repeat: repeat-y;
+	background-position:right;
+}
+.bg_content {
+	background-image: url(https://cedarhillcenter.org/basicimg/right-content.gif);
+	background-repeat: repeat-y;
+	background-position:right;
+}
+/*---------------- css Search -----------------------------*/
+.buttonSearch{
+	background-color: #757525;
+	border:0px;
+	padding: 1px;
+	color: #ffffff;
+	text-decoration: none;
+	font-family: Verdana;
+	font-size: 10px;
+	height: 20px;
+	text-transform:uppercase;
+}
+
+input.Search {
+	background-color: #ffffff;
+	color: #725022;
+	border: #6a6a48 1px inset;
+	font-family: Verdana;
+	font-size: 11px;
+ 	   padding: 2px 0px 0px 2px;	
+	width: 115pt;
+	height: 17px;
+	margin: 0px;
+}
+.copyright
+{
+	COLOR: #6a6a48; TEXT-DECORATION: none;
+}
+.copyright a
+{
+	COLOR: #6a6a48; TEXT-DECORATION: none;
+
+}
+.copyright a:hover
+{
+		COLOR: #6a6a48; TEXT-DECORATION: underline;
+}
+/*---------------- css left or right -----------------------------*/
+.menu_left-right:link {
+ COLOR: #ffffff; TEXT-DECORATION: underline;
+}
+.menu_left-right:visited {
+ COLOR: #ffffff; TEXT-DECORATION: underline;
+}
+.menu_left-right:hover {
+ COLOR: #ffffff; TEXT-DECORATION: none;
+}
+.menu_left-right:active {
+ text-decoration:underline ; color: #ffffff;
+}
+
+.text_left-right {
+ font-family: Verdana; font-size: 11px;
+ color: #ffffff; line-height: 1.4;
+}
+
+.title_left-right {
+ font-family: Verdana; font-size: 18px;
+ color: #ffffff; line-height: 1.4;
+}
+
+.bg_calendar {
+	background-color: #c5c440;
+	text-align: center;
+	font-family: Verdana;
+	color: #000000;
+	font-size: 11px;
+}
+.title_quicksearch {
+ font-family: Verdana; font-size: 18pt;
+ color: #888c30;
+}
