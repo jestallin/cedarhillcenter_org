@@ -302,7 +302,7 @@ class CedarHillApp {
                             <p><em>Daily rentals are limited and available by request only</em></p>
                         </div>
                         <div class="rate-item">
-                            <h4>OVERNIGHTS: $700.00/night</h4>
+                            <h4>OVERNIGHTS: $700.00</h4>
                             <p><em>During July and August guests are required to stay for a minimum of 5 nights</em></p>
                         </div>
                     </div>
@@ -564,10 +564,7 @@ class CedarHillApp {
                         <div class="payment-section">
                             <p>Click the button below to proceed to our secure payment portal:</p>
                             <div class="text-center mt-4">
-                                <div>
-                                    <button disabled style="color:#ffffff; font-size:16px; font-family:Inter, sans-serif; font-weight:600; background-color:#2d5016; padding:12px 24px; display:inline-block; border-radius:8px; border:1px solid #2d5016; box-shadow:0 4px 6px -1px rgba(0, 0, 0, 0.1);">PAY NOW</button>
-                                    <script src="https://www.convergepay.com/hosted-payments/buy_button_script/586c58696677754851497550315a67764a663573364141414159794b45656e42"></script>
-                                </div>
+                                <a href="https://www.convergepay.com/hosted-payments?ssl_txn_auth_token=Gef%2Bp53bRIqSGxoh6N7IngAAAZeYVTpD" class="btn btn-primary" target="_blank" rel="noopener noreferrer">PAY NOW</a>
                             </div>
                             <p class="mt-4" style="font-size: 0.9rem; color: var(--neutral-stone);">By clicking "PAY NOW", you will be redirected to our secure payment processor.</p>
                         </div>
