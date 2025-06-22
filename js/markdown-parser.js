@@ -145,7 +145,11 @@ class MarkdownParser {
     // Helper method to create contact forms
     createContactForm() {
         return `
-            <form class="contact-form" id="contact-form">
+            <form name="contact" method="POST" data-netlify="true" class="contact-form" netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="contact">
+                <div style="display: none;">
+                    <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                </div>
                 <div class="form-group">
                     <label for="name" class="form-label">Name *</label>
                     <input type="text" id="name" name="name" class="form-input" required>
@@ -160,7 +164,7 @@ class MarkdownParser {
                 </div>
                 <div class="form-group">
                     <label for="message" class="form-label">Message *</label>
-                    <textarea id="message" name="message" class="form-textarea" rows="6" required></textarea>
+                    <textarea id="message" name="message" class="form-textarea" rows="6" required placeholder="Please let us know about your retreat needs, dates, group size, and any special requirements."></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Send Message</button>
             </form>

@@ -140,31 +140,8 @@ class CedarHillApp {
     }
 
     setupContactForm() {
-        document.addEventListener('submit', (e) => {
-            if (e.target.id === 'contact-form') {
-                e.preventDefault();
-                this.handleContactForm(e.target);
-            }
-        });
-    }
-
-    handleContactForm(form) {
-        // In a real application, you would collect form data and send it to a server
-        // const formData = new FormData(form);
-        // const data = Object.fromEntries(formData);
-        
-        // For now, we'll just show a success message
-        const formContainer = form.parentElement;
-        formContainer.innerHTML = `
-            <div class="card text-center">
-                <h3>Thank You!</h3>
-                <p>Your message has been received. We'll get back to you soon.</p>
-                <p><strong>Contact Information:</strong></p>
-                <p>Email: cedarhillretreat@gmail.com</p>
-                <p>Phone: 781-217-4540</p>
-                <a href="#/contact" class="btn btn-primary">Send Another Message</a>
-            </div>
-        `;
+        // Netlify Forms handles form submission automatically
+        // No JavaScript form handling needed
     }
 
     // Page Loading Methods
