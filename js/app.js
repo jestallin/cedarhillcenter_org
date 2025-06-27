@@ -24,6 +24,7 @@ class CedarHillApp {
         this.router.addRoute('rates', () => this.loadRatesPage());
         this.router.addRoute('accommodations', () => this.loadAccommodationsPage());
         this.router.addRoute('photos', () => this.loadPhotosPage());
+        this.router.addRoute('events', () => this.loadEventsPage());
         this.router.addRoute('contact', () => this.loadContactPage());
         this.router.addRoute('payment', () => this.loadPaymentPage());
         this.router.addRoute('404', () => this.load404Page());
@@ -492,6 +493,18 @@ class CedarHillApp {
         `;
 
         this.router.renderContent(content);
+    }
+
+    async loadEventsPage() {
+        try {
+            const response = await fetch('/content/events.md');
+            const markdown = await response.text();
+            const content = window.markdownParser.parse(markdown);
+            this.router.renderContent(content);
+        } catch (error) {
+            console.error('Error loading events page:', error);
+            this.load404Page();
+        }
     }
 
     load404Page() {
