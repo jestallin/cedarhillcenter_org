@@ -1,6 +1,6 @@
 # Accommodations
 
-Cedar Hill can accommodate day groups up to 30 and can sleep up to 16 people.
+Cedar Hill can accommodate day groups up to 30 and can sleep up to 15 people.
 
 ## Bedroom Configurations
 

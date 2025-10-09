@@ -1,6 +1,6 @@
 ## Experience Tranquility
 
-Cedar Hill sits on 12 acres of conservation land with a picturesque path to 500 feet of private beach on the bay.
+Cedar Hill is a small retreat center on 12 acres of conservation land with a picturesque path to 500 feet of private beach on the bay, accommodating day groups of up to 30 and overnight groups of 15.
 
 ### Natural Setting
 Our protected grounds offer guests a beautiful, natural setting for relaxation and gatherings on 12 acres of fields enhanced by wildflowers, stately cedars, and pristine private beach.
