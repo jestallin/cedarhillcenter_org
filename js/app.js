@@ -159,7 +159,7 @@ class CedarHillApp {
                 <section class="section">
                     <div class="section-title">
                         <h2>Experience Tranquility</h2>
-                        <p>Cedar Hill sits on 12 acres of conservation land with a picturesque path to 500 feet of private beach on the bay.</p>
+                        <p>Cedar Hill is a small retreat center on 12 acres of conservation land with a picturesque path to 500 feet of private beach on the bay, accommodating day groups of up to 30 and overnight groups of 15.</p>
                     </div>
                     <div class="grid grid-3">
                         <div class="card">
@@ -168,7 +168,7 @@ class CedarHillApp {
                         </div>
                         <div class="card">
                             <h3>Modern Amenities</h3>
-                            <p>We have a fully-equipped kitchen, large dining, living and family rooms, two full and two half baths, and comfortable accommodations for up to 16 guests.</p>
+                            <p>We have a fully-equipped kitchen, large dining, living and family rooms, two full and two half baths, and comfortable accommodations for up to 15 guests.</p>
                         </div>
                         <div class="card">
                             <h3>Peaceful Retreat</h3>
@@ -297,7 +297,7 @@ class CedarHillApp {
                                 <li>Fully-equipped kitchen</li>
                                 <li>Large dining, living and family rooms</li>
                                 <li>Two full and two half bathrooms</li>
-                                <li>Sleeping accommodations for up to 16 people</li>
+                                <li>Sleeping accommodations for up to 15 people</li>
                             </ul>
                         </div>
                         <div>
@@ -321,16 +321,16 @@ class CedarHillApp {
             <section class="section">
                 <div class="section-title">
                     <h2>Accommodations</h2>
-                    <p>Comfortable sleeping arrangements and modern amenities for groups up to 16 people.</p>
+                    <p>Comfortable sleeping arrangements and modern amenities for groups up to 15 people.</p>
                 </div>
                 <div class="card">
                     <h3>Capacity</h3>
-                    <p>Cedar Hill can accommodate day groups up to 30 and can sleep up to 16 people.</p>
+                    <p>Cedar Hill can accommodate day groups up to 30 and can sleep up to 15 people.</p>
                 </div>
                 <div class="grid grid-2">
                     <div class="card">
                         <h3>Bedroom Configurations</h3>
-                        <p>We have five bedrooms that sleep a total of 13 with an additional 3 trundle beds bringing the total up to 16. All beds are twin beds.</p>
+                        <p>We have five bedrooms that sleep a total of 13 with an additional 3 trundle beds bringing the total up to 15. All beds are twin beds.</p>
                         <ul>
                             <li><strong>Bedroom 1:</strong> Sleeps 1 (with one trundle bed)</li>
                             <li><strong>Bedroom 2:</strong> Sleeps 2</li>

@@ -145,7 +145,7 @@ class MarkdownParser {
     // Helper method to create contact forms
     createContactForm() {
         return `
-            <form name="contact" method="POST" data-netlify="true" class="contact-form" netlify-honeypot="bot-field">
+            <form name="contact" method="POST" data-netlify="true" class="contact-form" netlify-honeypot="bot-field" netlify>
                 <input type="hidden" name="form-name" value="contact">
                 <div style="display: none;">
                     <label>Don't fill this out if you're human: <input name="bot-field"></label>
