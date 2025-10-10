@@ -160,7 +160,6 @@ class CedarHillApp {
                     <div class="section-title">
                         <h2>Experience Tranquility</h2>
                         <p>Cedar Hill is a small retreat center on 12 acres of conservation land with a picturesque path to 500 feet of private beach on the bay.</p>
-                        <p>We accommodate day groups of up to 30 and overnight groups of 15.</p>
                     </div>
                     <div class="grid grid-3">
                         <div class="card">
@@ -169,7 +168,7 @@ class CedarHillApp {
                         </div>
                         <div class="card">
                             <h3>Modern Amenities</h3>
-                            <p>We have a fully-equipped kitchen, large dining, living and family rooms, two full and two half baths, and comfortable accommodations for up to 15 guests.</p>
+                            <p>We have a fully-equipped kitchen, large dining, living and family rooms, two full and two half baths, and comfortable accommodations for up to 30 day guests and 15 overnight guests.</p>
                         </div>
                         <div class="card">
                             <h3>Peaceful Retreat</h3>
