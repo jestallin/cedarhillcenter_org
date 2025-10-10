@@ -159,7 +159,8 @@ class CedarHillApp {
                 <section class="section">
                     <div class="section-title">
                         <h2>Experience Tranquility</h2>
-                        <p>Cedar Hill is a small retreat center on 12 acres of conservation land with a picturesque path to 500 feet of private beach on the bay, accommodating day groups of up to 30 and overnight groups of 15.</p>
+                        <p>Cedar Hill is a small retreat center on 12 acres of conservation land with a picturesque path to 500 feet of private beach on the bay.</p>
+                        <p>We accommodate day groups of up to 30 and overnight groups of 15.</p>
                     </div>
                     <div class="grid grid-3">
                         <div class="card">
