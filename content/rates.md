@@ -8,6 +8,8 @@
 **OVERNIGHTS: $700.00**
 *During July and August guests are required to stay for a minimum of 5 nights*
 
+**Please note:** Starting in 2027, our nightly rate will increase to $800.00.
+
 Please [contact us](contact) for the total payment amount.
 
 ## What's Included

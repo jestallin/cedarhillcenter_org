@@ -4,13 +4,13 @@ Cedar Hill can accommodate day groups up to 30 and can sleep up to 15 people.
 
 ## Bedroom Configurations
 
-We have five bedrooms that sleep a total of 13 with an additional 3 trundle beds bringing the total up to 16. All beds are twin beds.
+We have five bedrooms that sleep a total of 13 with an additional 2 trundle beds bringing the total up to 15. All beds are twin beds.
 
 * **Bedroom 1:** Sleeps 1 (with one trundle bed)
 * **Bedroom 2:** Sleeps 2 
 * **Bedroom 3:** Sleeps 2
 * **Bedroom 4:** Sleeps 4
-* **Bedroom 5:** Sleeps 4 (with an additional two trundle beds)
+* **Bedroom 5:** Sleeps 4 (with one additional trundle bed)
 
 ## Common Areas
 
