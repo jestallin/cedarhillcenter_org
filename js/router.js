@@ -95,22 +95,6 @@ class Router {
         `;
     }
 
-    async loadContent(path) {
-        this.showLoading();
-        
-        try {
-            const response = await fetch(`content/${path}.md`);
-            if (!response.ok) {
-                throw new Error(`Failed to load content: ${response.status}`);
-            }
-            const markdown = await response.text();
-            return window.markdownParser.parse(markdown);
-        } catch (error) {
-            console.error('Content loading error:', error);
-            throw error;
-        }
-    }
-
     renderContent(html, containerClass = 'container') {
         const mainContent = document.getElementById('main-content');
         mainContent.innerHTML = `

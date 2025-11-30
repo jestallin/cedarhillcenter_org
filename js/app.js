@@ -159,7 +159,10 @@ class CedarHillApp {
                 <section class="section">
                     <div class="section-title">
                         <h2>Experience Tranquility</h2>
-                        <p>Cedar Hill is a small retreat center on 12 acres of conservation land with a picturesque path to 500 feet of private beach on the bay.</p>
+                        <p>Cedar Hill is a small retreat center on 12 acres of conservation land<br>
+                        with a picturesque path to 500 feet of private beach on the bay.</p>
+                        <p>Cedar Hill can accommodate day groups of up to 30 people<br>
+                        and can sleep a total of 15 with parking for 20 cars.</p>
                     </div>
                     <div class="grid grid-3">
                         <div class="card">
@@ -290,6 +293,10 @@ class CedarHillApp {
                     </div>
                 </div>
                 <div class="card">
+                    <h3>2027 Rate Update</h3>
+                    <p>Starting in 2027, our overnight rate will increase to $800.00 per night. We are making this announcement early to give our guests advance notice for planning future retreats.</p>
+                </div>
+                <div class="card">
                     <h3>What's Included</h3>
                     <div class="grid grid-2">
                         <div>
@@ -330,13 +337,13 @@ class CedarHillApp {
                 <div class="grid grid-2">
                     <div class="card">
                         <h3>Bedroom Configurations</h3>
-                        <p>We have five bedrooms that sleep a total of 13 with an additional 3 trundle beds bringing the total up to 15. All beds are twin beds.</p>
+                        <p>We have five bedrooms that sleep a total of 13 with an additional 2 trundle beds bringing the total up to 15. All beds are twin beds.</p>
                         <ul>
                             <li><strong>Bedroom 1:</strong> Sleeps 1 (with one trundle bed)</li>
                             <li><strong>Bedroom 2:</strong> Sleeps 2</li>
                             <li><strong>Bedroom 3:</strong> Sleeps 2</li>
                             <li><strong>Bedroom 4:</strong> Sleeps 4</li>
-                            <li><strong>Bedroom 5:</strong> Sleeps 4 (with an additional two trundle beds)</li>
+                            <li><strong>Bedroom 5:</strong> Sleeps 4 (with one additional trundle bed)</li>
                         </ul>
                     </div>
                     <div class="card">
@@ -496,15 +503,51 @@ class CedarHillApp {
     }
 
     async loadEventsPage() {
-        try {
-            const response = await fetch('/content/events.md');
-            const markdown = await response.text();
-            const content = window.markdownParser.parse(markdown);
-            this.router.renderContent(content);
-        } catch (error) {
-            console.error('Error loading events page:', error);
-            this.load404Page();
-        }
+        const content = `
+            <section class="section">
+                <div class="section-title">
+                    <h2>Events</h2>
+                    <p>Cedar Hill Center hosts and sponsors various events throughout the year to bring the community together and support our mission as a nonprofit retreat center.</p>
+                </div>
+                <div class="card">
+                    <h3>Past Events</h3>
+                </div>
+                <div class="card">
+                    <h3>Living with Sharks - Benefit Presentation by Dr. Greg Skomal</h3>
+                    <p><strong>March 10, 2023 | First Parish Unitarian Universalist Church, Duxbury</strong></p>
+                    <p>Mass Division of Marine Fisheries Shark Research Director, Dr. Greg Skomal, made an hour and a half presentation to a packed audience of 98 attendees at Duxbury's First Parish Unitarian Universalist Church. This benefit presentation for Cedar Hill Retreat Center, a nonprofit, nondenominational, self-supporting 501(c)3, focused on the sand shark and the great white shark, both of which have returned to the Northeast.</p>
+                    <h4>Presentation Highlights:</h4>
+                    <ul>
+                        <li>Shark locations in and around Massachusetts Bay</li>
+                        <li>Preferred water temperatures and seasonal patterns</li>
+                        <li>Return patterns to the Northeast, including Canada</li>
+                        <li>Feeding and migrating behaviors</li>
+                        <li>Congregation and dispersal patterns</li>
+                    </ul>
+                    <p>Following the presentation, Dr. Skomal signed copies of the most recent (third) edition of his highly acclaimed book, <em>The Shark Handbook</em>, which serves as an excellent read and handy desktop reference for shark lovers and scientists alike.</p>
+                </div>
+                <div class="card">
+                    <h3>We Are All Whalers - Benefit Presentation by Dr. Michael Moore</h3>
+                    <p><strong>November 8, 2024 | First Parish Unitarian Universalist Church, Duxbury</strong></p>
+                    <p>Marine Veterinarian Dr. Michael Moore from Woods Hole Oceanographic Institution presented "We Are All Whalers: The Plight of Whales and Our Responsibility" to benefit Cedar Hill Retreat Center. Drawing from 40 years of marine research, Dr. Moore explored the critical threats facing North Atlantic right whales from human activities.</p>
+                    <h4>Presentation Highlights:</h4>
+                    <ul>
+                        <li>The critically endangered North Atlantic right whale population</li>
+                        <li>Impact of commercial fishing and global shipping on whale survival</li>
+                        <li>Trauma from ship collisions and fishing gear entanglements</li>
+                        <li>Technological solutions including ropeless fishing nets</li>
+                        <li>Consumer responsibility and sustainable seafood practices</li>
+                        <li>What individuals can do to help protect marine mammals</li>
+                    </ul>
+                    <p>Dr. Moore shared compelling insights from his decades of research, emphasizing how human activities directly impact whale populations and offering practical solutions for conservation. The presentation aimed to educate attendees about sustainable practices and their role in marine conservation.</p>
+                </div>
+                <div class="card text-center">
+                    <p><em>Stay tuned for upcoming events and presentations that support Cedar Hill Center's mission of providing a peaceful retreat space for all.</em></p>
+                </div>
+            </section>
+        `;
+
+        this.router.renderContent(content);
     }
 
     load404Page() {

@@ -24,16 +24,9 @@ This is a modern single-page application (SPA) for Cedar Hill Center, a non-deno
 ├── css/
 │   └── styles.css         # Modern CSS design system
 ├── js/
-│   ├── app.js            # Main application logic and page handlers
+│   ├── app.js            # Main application logic, page handlers, and content
 │   ├── router.js         # Client-side routing system
-│   └── markdown-parser.js # Markdown to HTML conversion
-├── content/               # Markdown content files
-│   ├── home.md
-│   ├── about.md
-│   ├── history.md
-│   ├── rates.md
-│   ├── accommodations.md
-│   └── contact.md
+│   └── markdown-parser.js # Markdown to HTML conversion utilities
 ├── Images/               # Organized image assets
 │   ├── Banner/          # Hero/banner images
 │   ├── Bedrooms/        # Bedroom photos
@@ -42,15 +35,14 @@ This is a modern single-page application (SPA) for Cedar Hill Center, a non-deno
 │   ├── Winter/          # Seasonal winter photos
 │   ├── Historical/      # Historical photos and portraits
 │   └── Legacy/          # Legacy technical assets
-├── css/                 # Image assets
 └── CNAME                # Domain configuration
 ```
 
 ### Content Management
-- **Dynamic Markdown Loading**: All page content loaded from `/content/` directory at runtime
-- **Real-time Updates**: Edit markdown files and refresh to see changes immediately
-- **No Build Process**: Content is fetched and parsed dynamically in the browser
-- **Special Layouts**: Automatic detection of special sections (e.g., Rosamund's portrait layout)
+- **Embedded Content**: All page content is embedded directly in `js/app.js` as HTML strings within page handler methods
+- **Real-time Updates**: Edit `js/app.js` and refresh to see changes immediately
+- **No Build Process**: Content is rendered directly from JavaScript methods
+- **Special Layouts**: Custom HTML structure for special sections (e.g., Rosamund's portrait layout)
 
 ### Design System
 
@@ -69,15 +61,16 @@ This is a modern single-page application (SPA) for Cedar Hill Center, a non-deno
 ## Development Workflow
 
 ### Adding New Pages
-1. Create new `.md` file in `/content/` directory
-2. Add route in `js/app.js` setupRoutes() method
-3. Add navigation link in `index.html` nav section
-4. Implement page handler method in CedarHillApp class
+1. Add route in `js/app.js` setupRoutes() method (e.g., `this.router.addRoute('newpage', () => this.loadNewPage());`)
+2. Add navigation link in `index.html` nav section
+3. Implement page handler method in CedarHillApp class (e.g., `async loadNewPage()`)
+4. Create HTML content string within the handler method
 
 ### Editing Content
-1. Edit the appropriate `.md` file in `/content/` directory
-2. Use standard markdown syntax for formatting
-3. Changes are reflected immediately when page loads
+1. Locate the appropriate page handler method in `js/app.js` (e.g., `loadHomePage()`, `loadRatesPage()`, etc.)
+2. Edit the HTML content string within the method
+3. Use template literals for multi-line HTML
+4. Changes are reflected immediately when page loads after refresh
 
 ### Styling Changes
 1. Edit `css/styles.css` using CSS custom properties (variables)
@@ -125,7 +118,7 @@ The site deploys automatically to GitHub Pages:
 1. Open `index.html` in a modern web browser
 2. Use browser developer tools to test responsive design
 3. Test all navigation links and functionality
-4. Verify content renders correctly from markdown files
+4. Verify content renders correctly from JavaScript handlers
 
 ## Legacy Files (Archived)
 
