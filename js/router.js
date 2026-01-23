@@ -76,7 +76,18 @@ class Router {
             setTimeout(() => {
                 const element = document.getElementById(anchor);
                 if (element) {
-                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Get header height to account for sticky header
+                    const header = document.querySelector('.header');
+                    const headerHeight = header ? header.offsetHeight : 80; // Default to 80px if header not found
+                    
+                    // Calculate position accounting for header
+                    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementPosition - headerHeight - 20; // Extra 20px padding
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
                 }
             }, 100);
         }
