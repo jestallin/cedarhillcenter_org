@@ -27,7 +27,6 @@ class CedarHillApp {
         this.router.addRoute('events', () => this.loadEventsPage());
         this.router.addRoute('contact', () => this.loadContactPage());
         this.router.addRoute('payment', () => this.loadPaymentPage());
-        this.router.addRoute('tickets', () => this.loadTicketsPage());
         this.router.addRoute('404', () => this.load404Page());
     }
 
@@ -518,8 +517,39 @@ class CedarHillApp {
                     <h4>Early Bird Raffle</h4>
                     <p>Purchase tickets early for a chance to win a copy of Andrew's book and app subscription. Must be present to win.</p>
                     <p><strong>Tickets: $30</strong></p>
-                    <div class="text-center mt-4">
-                        <a href="#/tickets" class="btn btn-primary">Buy Tickets</a>
+                    
+                    <div class="mt-6" style="border-top: 1px solid #e5e7eb; padding-top: var(--space-6);">
+                        <h4>Purchase Tickets</h4>
+                        <form id="marine-life-ticket-form" class="ticket-form">
+                            <div class="form-group">
+                                <label for="marine-quantity" class="form-label">Number of Tickets</label>
+                                <select id="marine-quantity" name="quantity" class="form-input" required>
+                                    <option value="">Select quantity...</option>
+                                    <option value="1">1 ticket - $30.00</option>
+                                    <option value="2">2 tickets - $60.00</option>
+                                    <option value="3">3 tickets - $90.00</option>
+                                    <option value="4">4 tickets - $120.00</option>
+                                    <option value="5">5 tickets - $150.00</option>
+                                    <option value="6">6 tickets - $180.00</option>
+                                    <option value="7">7 tickets - $210.00</option>
+                                    <option value="8">8 tickets - $240.00</option>
+                                    <option value="9">9 tickets - $270.00</option>
+                                    <option value="10">10 tickets - $300.00</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <div style="background-color: var(--neutral-warm); padding: var(--space-4); border-radius: var(--border-radius); margin-bottom: var(--space-4);">
+                                    <p style="margin-bottom: 0;"><strong>Total:</strong> <span id="marine-total" style="font-size: var(--font-size-xl); color: var(--primary-green);">$0.00</span></p>
+                                </div>
+                            </div>
+                            <div id="converge-pay-button-container" style="display: none; text-align: center; margin-top: var(--space-4);">
+                                <!-- Converge Pay button will be inserted here -->
+                            </div>
+                            <div id="payment-amount-note" class="mt-4" style="display: none; background-color: var(--neutral-warm); padding: var(--space-4); border-radius: var(--border-radius);">
+                                <p style="font-size: 0.9rem; color: var(--neutral-charcoal); margin-bottom: var(--space-2);"><strong>Note:</strong> If the payment page asks you to enter an amount, please enter:</p>
+                                <p style="font-size: var(--font-size-lg); color: var(--primary-green); font-weight: 600; margin-bottom: 0;" id="payment-amount">$0.00</p>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <div class="card">
@@ -561,6 +591,98 @@ class CedarHillApp {
         `;
 
         this.router.renderContent(content);
+        
+        // Set up ticket form handlers after content is rendered
+        setTimeout(() => {
+            this.setupMarineLifeTicketForm();
+        }, 100);
+    }
+
+    setupMarineLifeTicketForm() {
+        const quantitySelect = document.getElementById('marine-quantity');
+        const totalSpan = document.getElementById('marine-total');
+        const buttonContainer = document.getElementById('converge-pay-button-container');
+        const amountNote = document.getElementById('payment-amount-note');
+        const amountDisplay = document.getElementById('payment-amount');
+
+        if (quantitySelect && totalSpan && buttonContainer) {
+            // Update totals when quantity changes
+            quantitySelect.addEventListener('change', () => {
+                const quantity = parseInt(quantitySelect.value) || 0;
+                const pricePerTicket = 30;
+                const total = quantity * pricePerTicket;
+                
+                totalSpan.textContent = `$${total.toFixed(2)}`;
+                
+                // Update amount note
+                if (amountNote && amountDisplay) {
+                    if (quantity > 0) {
+                        amountDisplay.textContent = `$${total.toFixed(2)}`;
+                        amountNote.style.display = 'block';
+                    } else {
+                        amountNote.style.display = 'none';
+                    }
+                }
+                
+                // Clear existing button and remove old scripts
+                buttonContainer.innerHTML = '';
+                
+                // Remove any existing Converge Pay scripts to ensure fresh session
+                const existingScripts = document.querySelectorAll('script[src*="convergepay.com/hosted-payments/buy_button_script"]');
+                existingScripts.forEach(s => s.remove());
+                
+                if (quantity > 0) {
+                    // Create unique container ID for this button instance
+                    const containerId = `converge-container-${Date.now()}`;
+                    buttonContainer.innerHTML = `
+                        <div id="${containerId}">
+                            <button disabled class="converge-pay-button" style="color:#ffffff; font-size:var(--font-size-base); font-family:var(--font-primary); font-weight:600; background-color:var(--primary-green); padding:var(--space-3) var(--space-6); display:inline-block; border-radius:var(--border-radius); border:2px solid var(--primary-green); box-shadow:var(--shadow-md); cursor:pointer; transition:all 0.2s ease;">BUY NOW</button>
+                        </div>
+                    `;
+                    
+                    // Add CSS to ensure button styling is maintained after Converge Pay script loads
+                    if (!document.getElementById('converge-button-styles')) {
+                        const style = document.createElement('style');
+                        style.id = 'converge-button-styles';
+                        style.textContent = `
+                            .converge-pay-button,
+                            .converge-pay-button:not(:disabled) {
+                                background-color: var(--primary-green) !important;
+                                color: #ffffff !important;
+                                border-color: var(--primary-green) !important;
+                                font-family: var(--font-primary) !important;
+                                font-weight: 600 !important;
+                                border-radius: var(--border-radius) !important;
+                                box-shadow: var(--shadow-md) !important;
+                            }
+                            .converge-pay-button:hover:not(:disabled) {
+                                background-color: var(--primary-green-light) !important;
+                                transform: translateY(-1px) !important;
+                                box-shadow: var(--shadow-lg) !important;
+                            }
+                        `;
+                        document.head.appendChild(style);
+                    }
+                    
+                    // Load Converge Pay script with cache-busting to ensure new session
+                    // The script will enable the button and create a new payment session
+                    const script = document.createElement('script');
+                    const scriptUrl = 'https://www.convergepay.com/hosted-payments/buy_button_script/524d352b576475615338694a36413376346e614946414141415a76734e5a4c46';
+                    // Add cache-busting parameter to force fresh script load (creates new session)
+                    script.src = `${scriptUrl}?t=${Date.now()}`;
+                    script.onload = () => {
+                        buttonContainer.style.display = 'block';
+                    };
+                    script.onerror = () => {
+                        console.error('Failed to load Converge Pay script');
+                    };
+                    
+                    document.body.appendChild(script);
+                } else {
+                    buttonContainer.style.display = 'none';
+                }
+            });
+        }
     }
 
     load404Page() {
@@ -633,125 +755,6 @@ class CedarHillApp {
         this.router.renderContent(content);
     }
 
-    async loadTicketsPage() {
-        const content = `
-            <section class="section">
-                <div class="section-title">
-                    <h2>Purchase Tickets</h2>
-                    <p>The Beauty of New England Marine Life with Andrew J. Martinez</p>
-                </div>
-                <div class="grid grid-2">
-                    <div class="card">
-                        <h3>Event Details</h3>
-                        <p><strong>Date:</strong> Friday, April 10th, 7:00-9:00 PM</p>
-                        <p><strong>Location:</strong> Duxbury UU First Parish Assembly Hall<br>842 Tremont St., Duxbury</p>
-                        <p><strong>Price per ticket:</strong> $30</p>
-                        <h4>Early Bird Raffle</h4>
-                        <p>Purchase tickets early for a chance to win a copy of Andrew's book and app subscription. Must be present to win.</p>
-                    </div>
-                    <div class="card">
-                        <h3>Select Quantity</h3>
-                        <form id="ticket-form" class="ticket-form">
-                            <div class="form-group">
-                                <label for="quantity" class="form-label">Number of Tickets</label>
-                                <select id="quantity" name="quantity" class="form-input" required>
-                                    <option value="">Select quantity...</option>
-                                    <option value="1">1 ticket - $30.00</option>
-                                    <option value="2">2 tickets - $60.00</option>
-                                    <option value="3">3 tickets - $90.00</option>
-                                    <option value="4">4 tickets - $120.00</option>
-                                    <option value="5">5 tickets - $150.00</option>
-                                    <option value="6">6 tickets - $180.00</option>
-                                    <option value="7">7 tickets - $210.00</option>
-                                    <option value="8">8 tickets - $240.00</option>
-                                    <option value="9">9 tickets - $270.00</option>
-                                    <option value="10">10 tickets - $300.00</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <div style="background-color: var(--neutral-warm); padding: var(--space-4); border-radius: var(--border-radius); margin-bottom: var(--space-4);">
-                                    <p style="margin-bottom: var(--space-2);"><strong>Subtotal:</strong> <span id="subtotal">$0.00</span></p>
-                                    <p style="margin-bottom: 0;"><strong>Total:</strong> <span id="total" style="font-size: var(--font-size-xl); color: var(--primary-green);">$0.00</span></p>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-primary" style="width: 100%;">Proceed to Payment</button>
-                        </form>
-                        <div id="payment-note" class="mt-4" style="display: none; background-color: var(--neutral-warm); padding: var(--space-4); border-radius: var(--border-radius);">
-                            <p style="font-size: 0.9rem; color: var(--neutral-charcoal); margin-bottom: var(--space-2);"><strong>Note:</strong> If the payment page asks you to enter an amount, please enter:</p>
-                            <p style="font-size: var(--font-size-lg); color: var(--primary-green); font-weight: 600; margin-bottom: 0;" id="manual-amount">$0.00</p>
-                        </div>
-                        <p class="mt-4" style="font-size: 0.9rem; color: var(--neutral-stone); text-align: center;">You will be redirected to our secure payment processor to complete your purchase.</p>
-                    </div>
-                </div>
-                <div class="text-center mt-8">
-                    <a href="#/events" class="btn btn-outline">Back to Events</a>
-                </div>
-            </section>
-        `;
-
-        this.router.renderContent(content);
-        
-        // Set up form handlers after content is rendered
-        setTimeout(() => {
-            this.setupTicketForm();
-        }, 100);
-    }
-
-    setupTicketForm() {
-        const quantitySelect = document.getElementById('quantity');
-        const subtotalSpan = document.getElementById('subtotal');
-        const totalSpan = document.getElementById('total');
-        const ticketForm = document.getElementById('ticket-form');
-
-        if (quantitySelect && subtotalSpan && totalSpan && ticketForm) {
-            // Update totals when quantity changes
-            quantitySelect.addEventListener('change', () => {
-                const quantity = parseInt(quantitySelect.value) || 0;
-                const pricePerTicket = 30;
-                const subtotal = quantity * pricePerTicket;
-                
-                subtotalSpan.textContent = `$${subtotal.toFixed(2)}`;
-                totalSpan.textContent = `$${subtotal.toFixed(2)}`;
-                
-                // Update manual amount note
-                const manualAmountNote = document.getElementById('payment-note');
-                const manualAmount = document.getElementById('manual-amount');
-                if (manualAmountNote && manualAmount) {
-                    if (quantity > 0) {
-                        manualAmountNote.style.display = 'block';
-                        manualAmount.textContent = `$${subtotal.toFixed(2)}`;
-                    } else {
-                        manualAmountNote.style.display = 'none';
-                    }
-                }
-            });
-
-            // Handle form submission
-            ticketForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const quantity = parseInt(quantitySelect.value);
-                
-                if (!quantity || quantity < 1) {
-                    alert('Please select the number of tickets you would like to purchase.');
-                    return;
-                }
-
-                const total = quantity * 30;
-                
-                // Redirect to Converge Pay with amount as URL parameter
-                // Try common parameter names: ssl_amount, amount, or total
-                // Note: You may need to verify the correct parameter name with Converge Pay support
-                const baseUrl = 'https://www.convergepay.com/hosted-payments';
-                const params = new URLSearchParams({
-                    'ssl_txn_auth_token': 'Gef+p53bRIqSGxoh6N7IngAAAZeYVTpD',
-                    'ssl_amount': total.toFixed(2)
-                });
-                
-                const convergePayUrl = `${baseUrl}?${params.toString()}`;
-                window.open(convergePayUrl, '_blank');
-            });
-        }
-    }
 }
 
 // Initialize the application when the DOM is loaded
