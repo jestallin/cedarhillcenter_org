@@ -38,7 +38,16 @@ class Router {
         if (!hash || hash === '#' || hash === '#/') {
             return 'home';
         }
-        return hash.slice(2); // Remove '#/' prefix
+        // Extract route part (before any query parameters)
+        const routePart = hash.split('?')[0];
+        return routePart.slice(2); // Remove '#/' prefix
+    }
+
+    getAnchorFragment() {
+        const hash = window.location.hash;
+        // Check for query parameter 'anchor'
+        const urlParams = new URLSearchParams(hash.split('?')[1] || '');
+        return urlParams.get('anchor');
     }
 
     async handleRouteChange() {
@@ -51,10 +60,25 @@ class Router {
             
             try {
                 await handler();
+                // After content is rendered, scroll to anchor if present
+                this.scrollToAnchor();
             } catch (error) {
                 console.error('Route handler error:', error);
                 this.showError('Failed to load page content');
             }
+        }
+    }
+
+    scrollToAnchor() {
+        const anchor = this.getAnchorFragment();
+        if (anchor) {
+            // Small delay to ensure content is rendered
+            setTimeout(() => {
+                const element = document.getElementById(anchor);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 100);
         }
     }
 

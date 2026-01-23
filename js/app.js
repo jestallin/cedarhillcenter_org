@@ -507,6 +507,18 @@ class CedarHillApp {
                     <p>Cedar Hill Center hosts and sponsors various events throughout the year to bring the community together and support our mission as a nonprofit retreat center.</p>
                 </div>
                 <div class="card">
+                    <h3>Upcoming Events</h3>
+                </div>
+                <div class="card" id="marine-life-event">
+                    <h3>The Beauty of New England Marine Life with Andrew J. Martinez</h3>
+                    <p><strong>Friday, April 10th, 7:00-9:00 PM | Duxbury UU First Parish Assembly Hall, 842 Tremont St., Duxbury</strong></p>
+                    <p>Join renowned underwater photographer and marine naturalist Andrew J. Martinez for a visual journey beneath New England's cold waters. For over 40 years, Andrew has documented the Gulf of Maine's extraordinary marine life through stunning photography.</p>
+                    <p>As author of the acclaimed field guide "Marine Life of the North Atlantic" and creator of the popular Marine Life app, Andrew will reveal the vibrant colors, intricate behaviors, and surprising diversity of species that call our local waters home—from delicate nudibranchs to mysterious deep-water fish.</p>
+                    <h4>Early Bird Raffle</h4>
+                    <p>Purchase tickets early for a chance to win a copy of Andrew's book and app subscription. Must be present to win.</p>
+                    <p><strong>Tickets: $30</strong></p>
+                </div>
+                <div class="card">
                     <h3>Past Events</h3>
                 </div>
                 <div class="card">
