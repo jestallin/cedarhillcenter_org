@@ -632,21 +632,14 @@ class CedarHillApp {
                 existingScripts.forEach(s => s.remove());
                 
                 if (quantity > 0) {
-                    // Create unique container ID for this button instance
-                    const containerId = `converge-container-${Date.now()}`;
-                    buttonContainer.innerHTML = `
-                        <div id="${containerId}">
-                            <button disabled class="converge-pay-button" style="color:#ffffff; font-size:var(--font-size-base); font-family:var(--font-primary); font-weight:600; background-color:var(--primary-green); padding:var(--space-3) var(--space-6); display:inline-block; border-radius:var(--border-radius); border:2px solid var(--primary-green); box-shadow:var(--shadow-md); cursor:pointer; transition:all 0.2s ease;">BUY NOW</button>
-                        </div>
-                    `;
-                    
                     // Add CSS to ensure button styling is maintained after Converge Pay script loads
                     if (!document.getElementById('converge-button-styles')) {
                         const style = document.createElement('style');
                         style.id = 'converge-button-styles';
                         style.textContent = `
                             .converge-pay-button,
-                            .converge-pay-button:not(:disabled) {
+                            .converge-pay-button:not(:disabled),
+                            #converge-pay-button-container button:not(:disabled) {
                                 background-color: var(--primary-green) !important;
                                 color: #ffffff !important;
                                 border-color: var(--primary-green) !important;
@@ -654,8 +647,11 @@ class CedarHillApp {
                                 font-weight: 600 !important;
                                 border-radius: var(--border-radius) !important;
                                 box-shadow: var(--shadow-md) !important;
+                                padding: var(--space-3) var(--space-6) !important;
+                                font-size: var(--font-size-base) !important;
                             }
-                            .converge-pay-button:hover:not(:disabled) {
+                            .converge-pay-button:hover:not(:disabled),
+                            #converge-pay-button-container button:hover:not(:disabled) {
                                 background-color: var(--primary-green-light) !important;
                                 transform: translateY(-1px) !important;
                                 box-shadow: var(--shadow-lg) !important;
@@ -664,20 +660,30 @@ class CedarHillApp {
                         document.head.appendChild(style);
                     }
                     
-                    // Load Converge Pay script with cache-busting to ensure new session
-                    // The script will enable the button and create a new payment session
-                    const script = document.createElement('script');
-                    const scriptUrl = 'https://www.convergepay.com/hosted-payments/buy_button_script/524d352b576475615338694a36413376346e614946414141415a76734e5a4c46';
-                    // Add cache-busting parameter to force fresh script load (creates new session)
-                    script.src = `${scriptUrl}?t=${Date.now()}`;
-                    script.onload = () => {
-                        buttonContainer.style.display = 'block';
-                    };
-                    script.onerror = () => {
-                        console.error('Failed to load Converge Pay script');
-                    };
+                    // Remove any existing Converge Pay scripts first
+                    const existingScripts = document.querySelectorAll('script[src*="convergepay.com/hosted-payments/buy_button_script"]');
+                    existingScripts.forEach(s => s.remove());
                     
-                    document.body.appendChild(script);
+                    // Create button structure that matches Converge Pay's expected format
+                    // The script expects the button to be directly accessible, and script as sibling
+                    const scriptUrl = 'https://www.convergepay.com/hosted-payments/buy_button_script/524d352b576475615338694a36413376346e614946414141415a76734e5a4c46';
+                    buttonContainer.innerHTML = `
+                        <button disabled class="converge-pay-button" style="color:#ffffff; font-size:var(--font-size-base); font-family:var(--font-primary); font-weight:600; background-color:var(--primary-green); padding:var(--space-3) var(--space-6); display:inline-block; border-radius:var(--border-radius); border:2px solid var(--primary-green); box-shadow:var(--shadow-md); cursor:pointer; transition:all 0.2s ease;">BUY NOW</button>
+                        <script src="${scriptUrl}?t=${Date.now()}"></script>
+                    `;
+                    
+                    // Show container
+                    buttonContainer.style.display = 'block';
+                    
+                    // Since innerHTML doesn't execute script tags, we need to manually create and append the script
+                    setTimeout(() => {
+                        const script = document.createElement('script');
+                        script.src = `${scriptUrl}?t=${Date.now()}`;
+                        script.onerror = () => {
+                            console.error('Failed to load Converge Pay script');
+                        };
+                        buttonContainer.appendChild(script);
+                    }, 10);
                 } else {
                     buttonContainer.style.display = 'none';
                 }
