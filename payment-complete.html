@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Complete | Cedar Hill Retreat Center</title>
+    <meta name="description" content="Your Cedar Hill payment has been received. Thank you.">
+    <style>
+        :root {
+            --primary-green: #2d5016;
+            --primary-green-light: #4a7c25;
+            --neutral-bg: #f7f8f5;
+            --neutral-text: #1f2937;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, Arial, sans-serif;
+            background: var(--neutral-bg);
+            color: var(--neutral-text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 640px;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0 0 12px;
+            color: var(--primary-green);
+            font-size: 2rem;
+        }
+
+        p {
+            margin: 0 0 14px;
+            line-height: 1.55;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 12px;
+            background: var(--primary-green);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            padding: 12px 20px;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn:hover {
+            background: var(--primary-green-light);
+        }
+    </style>
+</head>
+<body>
+    <main class="card">
+        <h1>Payment Complete</h1>
+        <p>Thank you. Your payment has been submitted successfully.</p>
+        <p>If you have any questions, contact us at <a href="mailto:cedarhillretreat@gmail.com">cedarhillretreat@gmail.com</a>.</p>
+        <a class="btn" href="/">Return to Cedar Hill Home</a>
+    </main>
+</body>
+</html>
